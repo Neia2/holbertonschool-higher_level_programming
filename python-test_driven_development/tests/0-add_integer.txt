@@ -1,12 +1,38 @@
-print(add_integer(1, 2))  # 3
-print(add_integer(100))  # 198
-print(add_integer(100, 2.3))  # 102
-print(add_integer(10.3, 2))  # 12
-try:
-    print(add_integer(4, "School"))  # TypeError
-except Exception as e:
-    print(e)  # "b must be an integer"
-try:
-    print(add_integer(None))  # TypeError
-except Exception as e:
-    print(e)  # "a must be an integer"
+The ``0-add_integer.py`` module
+======================
+
+Using ``add_integer``
+-------------------
+
+>>> add_integer = __import__("0-add_integer").add_integer
+
+>>> add_integer(-2 ,3)
+1
+
+>>> add_integer(2)
+100
+
+>>> add_integer()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+>>> add_integer('b', 32)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer('holberton', 1)
+Traceback (most recent call last):
+    raise TypeError('a must be an integer')
+TypeError: a must be an integer
+
+>>> add_integer(1, "h")
+Traceback (most recent call last):
+    raise TypeError('b must be an integer')
+TypeError: b must be an integer
+
+>>> add_integer(3.24, 4.5)
+7
+
+>>> add_integer(3.99, 3)
+6
