@@ -1,10 +1,14 @@
 #!/usr/bin/python3
+"""
+This module contains a function to print a square made of # characters.
+"""
+
 def print_square(size):
     """
-    Prints a square with the character #.
+    Prints a square made of # characters.
 
     Args:
-        size (int): The size length of the square.
+        size (int): The size of the square's side.
 
     Raises:
         TypeError: If size is not an integer.
@@ -22,8 +26,9 @@ def print_square(size):
     if size < 0:
         raise ValueError("size must be >= 0")
 
-    if size == 0:
-        print()
-    else:
-        for i in range(size):
-            print("#" * size)
+    for _ in range(size):
+        print("#" * size)
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
