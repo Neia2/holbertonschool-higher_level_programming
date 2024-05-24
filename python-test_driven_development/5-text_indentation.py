@@ -20,11 +20,11 @@ def text_indentation(text):
     for i, c in enumerate(text):
         if c in '.?:':
             print(text[begin: i + 1].strip())
-            print()  # Add a blank line after each sentence
+            print()
             begin = i + 1
     if begin < len(text):
         print(text[begin:].strip())
-        print()  # Add a blank line at the end if there's remaining text
+        print()
 
 if __name__ == "__main__":
     import doctest
