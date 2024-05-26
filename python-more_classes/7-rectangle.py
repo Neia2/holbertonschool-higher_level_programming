@@ -1,4 +1,13 @@
 #!/usr/bin/python3
+"""
+This module defines a Rectangle class which models a rectangle shape
+with width and height attributes. The class keeps track of the number
+of instances created and deleted, allows for customization of the
+symbol used for string representation, and includes methods to
+calculate area and perimeter. Additionally, it provides methods to
+compare rectangle sizes and create square instances.
+"""
+
 class Rectangle:
     """
     This class defines a rectangle with width and height attributes.
@@ -82,3 +91,23 @@ class Rectangle:
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
 
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """
+        Return the rectangle with the greater area, or rect_1 if they are equal.
+        Raise a TypeError if rect_1 or rect_2 are not instances of Rectangle.
+        """
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() >= rect_2.area():
+            return rect_1
+        return rect_2
+
+    @classmethod
+    def square(cls, size=0):
+        """
+        Return a new Rectangle instance with width == height == size.
+        """
+        return cls(size, size)
