@@ -1,4 +1,11 @@
-#!/usr/bin/python3
+"""
+This module defines a Rectangle class.
+
+The Rectangle class defines a rectangle by its width and height.
+It includes methods to calculate the area and perimeter of the rectangle.
+Additionally, it provides a string representation of the rectangle using the '#' character.
+"""
+
 class Rectangle:
     """
     A class that defines a rectangle by its width and height.
@@ -71,4 +78,3 @@ class Rectangle:
     def __repr__(self):
         """Returns a string representation of the rectangle for debugging purposes."""
         return f"<Rectangle(width={self.width}, height={self.height})>"
-
