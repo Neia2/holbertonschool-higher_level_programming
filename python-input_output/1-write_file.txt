@@ -1,0 +1,13 @@
+"""
+This is a test file for the write_file function.
+
+>>> write_file = __import__('1-write_file').write_file
+>>> nb_characters = write_file("my_first_file.txt", "This School is so cool!\n")
+>>> print(nb_characters)
+24
+
+>>> with open("my_first_file.txt", "r", encoding="utf-8") as f:
+...     print(f.read())
+This School is so cool!
+<BLANKLINE>
+"""
