@@ -22,10 +22,8 @@ class Student:
             dict: Dictionary representation of the Student instance.
         """
         if attrs is None:
-            # If attrs is None, retrieve all attributes
             return self.__dict__
         else:
-            # Otherwise, retrieve only specified attributes
             json_dict = {}
             for attr in attrs:
                 if hasattr(self, attr):
