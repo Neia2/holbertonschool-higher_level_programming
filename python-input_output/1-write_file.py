@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+Module 1-write_file
+A module that contains a function to write a string to a text file (UTF8).
+"""
+
+
 def write_file(filename="", text=""):
     """
     Write a string to a text file (UTF8).
