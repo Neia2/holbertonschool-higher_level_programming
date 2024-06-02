@@ -10,15 +10,20 @@ app.config['JWT_SECRET_KEY'] = 'T0p_s3cret@2024BR'
 auth = HTTPBasicAuth()
 jwt = JWTManager(app)
 
+# Example hashed passwords (replace these with actual hashed passwords)
 users = {
-    "user1": {"username": "user1", "password": generate_password_hash("password"), "role": "user"},
-    "admin1": {"username": "admin1", "password": generate_password_hash("adminpassword"), "role": "admin"}
+    "user1": {"username": "user1", "password": generate_password_hash("password1"), "role": "user"},
+    "admin1": {"username": "admin1", "password": generate_password_hash("password2"), "role": "admin"}
 }
 
 @auth.verify_password
 def verify_password(username, password):
-    if username in users and check_password_hash(users[username]['password'], password):
+    if username in users and check_password_hash(users.get(username)["password"], password):
         return username
+
+@app.route('/')
+def index():
+    return "Welcome to the API! Use /login to get a JWT token."
 
 @app.route('/basic-protected')
 @auth.login_required
@@ -34,12 +39,13 @@ def login():
         access_token = create_access_token(identity=username)
         return jsonify(access_token=access_token)
     else:
-        return jsonify({"error": "Invalid username or password"}), 401
+        return jsonify({"error": "Unauthorized"}), 401
 
-@app.route('/jwt-protected')
+@app.route("/protected", methods=["GET"])
 @jwt_required()
-def jwt_protected():
-    return "JWT Auth: Access Granted"
+def protected():
+    current_user = get_jwt_identity()
+    return jsonify({"message": "JWT Auth: Access Granted", "user": current_user}), 200
 
 @app.route('/admin-only')
 @jwt_required()
