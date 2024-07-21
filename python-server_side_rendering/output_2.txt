@@ -1,7 +1,7 @@
 
-Hello {name},
+Hello Bob,
 
-You are invited to the {event_title} on {event_date} at {event_location}.
+You are invited to the Data Science Workshop on 2023-08-20 at San Francisco.
 
 We look forward to your presence.
 
