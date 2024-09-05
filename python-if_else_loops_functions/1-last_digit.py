@@ -1,11 +1,24 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+
+"""
+Imports the random module, which contains functions to generate random numbers.
+"""
 import random
 
-number = random.randint(-10000, 10000)  # Assign a random signed number
-last_digit = number % 10  # Compute the last digit
+"""
+Generates a random integer between -10000 and 10000 (inclusive)
+and assigns it to the variable 'number'.
+"""
+number = random.randint(-10000, 10000)
+
+"""
+Calculates the last digit of the number and prints it along with additional messages
+based on its value.
+"""
+last_digit = number % 10
 
 if last_digit < 0:
-    last_digit *= -1  # Make last digit positive if number is negative
+    last_digit *= -1
 
 print(f"Last digit of {number} is {last_digit}", end="")
 

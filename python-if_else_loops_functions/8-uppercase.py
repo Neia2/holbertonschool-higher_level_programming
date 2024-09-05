@@ -1,5 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
+"""
+Prints a string in uppercase, converting lowercase letters.
+"""
 def uppercase(s):
     for char in s:
         if 'a' <= char <= 'z':
