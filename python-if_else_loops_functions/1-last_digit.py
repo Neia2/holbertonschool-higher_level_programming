@@ -17,7 +17,8 @@ based on its value.
 """
 last_digit = number % 10
 
-if last_digit < 0:
+# Handle negative last digit case
+if number < 0:
     last_digit *= -1
 
 print(f"Last digit of {number} is {last_digit}", end="")
