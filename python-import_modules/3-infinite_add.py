@@ -1,22 +1,27 @@
 #!/usr/bin/python3
+
+"""
+This script sums the command-line arguments passed to it,
+excluding the script name.
+
+It performs the following steps:
+1. Counts the number of arguments provided.
+2. If no arguments are provided, it prints "0".
+3. If arguments are provided, it sums them (assuming all arguments
+are integers).
+4. Prints the result of the sum of the arguments.
+"""
+
 import sys
 
-def main():
-    """Calculate and print the sum of command-line arguments."""
-    total_sum = 0
 
-    # Iterate over each argument
-    for arg in sys.argv[1:]:
-        try:
-            # Convert argument to integer and add to total_sum
-            total_sum += int(arg)
-        except ValueError:
-            # Handle the case where conversion fails
-            print("Error: All arguments must be integers.")
-            return
-
-    # Print the total sum of all arguments
-    print(total_sum)
+length = len(sys.argv) - 1
+result = 0
 
 if __name__ == "__main__":
-    main()
+
+    for argument in range(1, len(sys.argv)):
+
+        result += int(sys.argv[argument])
+
+    print("{}".format(result))
