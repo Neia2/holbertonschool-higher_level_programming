@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 
 """
-Prints all numbers from 00 to 99, separated by ', ' with proper formatting.
+Displays numbers from 00 to 99, separated by a comma and a space,
+then displays “99” followed by a carriage return.
 """
-for num in range(100):
-    if num < 99:
-        print(f"{num:02d}, ", end="")
-    else:
-        print(f"{num:02d}")
+
+numbers = ', '.join("{:02d}".format(i) for i in range(99))
+print("{}, 99".format(numbers))

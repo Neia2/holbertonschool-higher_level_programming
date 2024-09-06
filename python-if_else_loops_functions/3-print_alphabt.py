@@ -1,8 +1,14 @@
 #!/usr/bin/python3
 
 """
-Prints the ASCII alphabet in lowercase except for the letters 'q' and 'e'.
+This script is executed using the Python 3 interpreter.
+
+It prints all lowercase letters of the English alphabet
+from 'a' to 'z', excluding the letters 'e' and 'q'.
+The letters are printed without a newline in between.
 """
-for letter in range(ord('a'), ord('z') + 1):
-    if chr(letter) not in ('q', 'e'):
-        print(chr(letter), end="")
+
+for letter in range(97, 123):
+    if letter == 101 or letter == 113:
+        continue
+    print('{}'.format(chr(letter)), end='')

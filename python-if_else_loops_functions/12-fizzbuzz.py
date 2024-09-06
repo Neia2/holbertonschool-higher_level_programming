@@ -1,17 +1,28 @@
 #!/usr/bin/python3
 
+
 """
-Prints numbers from 1 to 100, replacing multiples of 3 with 'Fizz',
-multiples of 5 with 'Buzz', and multiples of both with 'FizzBuzz'.
+Print the numbers from 1 to 100, but for multiples of three, print "Fizz"
+instead of the number, and for multiples of five, print "Buzz". For numbers
+which are multiples of both three and five, print "FizzBuzz".
+
+Returns:
+    None
 """
+
+
 def fizzbuzz():
-    for num in range(1, 101):
-        if num % 15 == 0:
+
+    for number in range(1, 101):
+
+        if number % 3 == 0 and number % 5 == 0:
             print("FizzBuzz", end=" ")
-        elif num % 3 == 0:
+
+        elif number % 3 == 0:
             print("Fizz", end=" ")
-        elif num % 5 == 0:
+
+        elif number % 5 == 0:
             print("Buzz", end=" ")
+
         else:
-            print(num, end=" ")
-    print()
+            print(f"{number}", end=" ")
