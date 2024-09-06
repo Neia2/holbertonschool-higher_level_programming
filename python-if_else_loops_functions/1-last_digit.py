@@ -1,31 +1,40 @@
 #!/usr/bin/python3
 
 """
-Imports the random module, which contains functions to generate random numbers.
+Import the random module, which contains functions to generate random numbers.
 """
 import random
 
 """
-Generates a random integer between -10000 and 10000 (inclusive)
-and assigns it to the variable 'number'.
+Generate a random integer between -10000 and 10000 (inclusive)
+and assign it to the variable 'number'.
 """
 number = random.randint(-10000, 10000)
 
 """
-Calculates the last digit of the number and prints it along with additional messages
-based on its value.
+Calculate the last digit of 'number'
 """
-last_digit = number % 10
+ld = number % 10
 
-# Handle negative last digit case
+"""
+Adjust the last digit for negative numbers
+"""
 if number < 0:
-    last_digit *= -1
+    ld = number * -1 % 10 * -1
 
-print(f"Last digit of {number} is {last_digit}", end="")
+"""
+Check if the last digit is 0
+"""
+if ld == 0:
+    print(f"Last digit of {number} is {ld} and is 0")
+    """
+    Check if the last digit is less than 6 and not 0
+    """
+elif ld < 6:
+    print(f"Last digit of {number} is {ld} and is less than 6 and not 0")
 
-if last_digit > 5:
-    print(" and is greater than 5")
-elif last_digit == 0:
-    print(" and is 0")
+    """
+    Check if the last digit is greater than 5
+    """
 else:
-    print(" and is less than 6 and not 0")
+    print(f"Last digit of {number} is {ld} and is greater than 5")
