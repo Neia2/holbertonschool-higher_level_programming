@@ -4,3 +4,4 @@
 class Square:
     """Defining a square class"""
     pass
+my_square = Square()
