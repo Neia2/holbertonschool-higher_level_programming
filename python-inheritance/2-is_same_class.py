@@ -6,4 +6,5 @@ of the specified class or otherwise False"""
 
 
 def is_same_class(obj, a_class):
+    """A function to know data type"""
     return type(obj) == a_class
