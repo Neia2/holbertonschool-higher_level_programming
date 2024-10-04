@@ -16,8 +16,5 @@ def to_json_string(my_obj):
     Returns:
         str: The JSON string representation of the given object.
 
-    Example:
-        >>> to_json_string({"name": "John", "age": 30})
-        '{"name": "John", "age": 30}'
     """
     return json.dumps(my_obj)
