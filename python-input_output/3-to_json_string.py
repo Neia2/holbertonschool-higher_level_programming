@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import json
-"""A function that returns the JSON representation of an object (string)"""
+"""Module compiled with python3"""
 
 
 def to_json_string(my_obj):
