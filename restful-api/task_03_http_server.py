@@ -1,6 +1,7 @@
 import http.server
 import socketserver
 import json
+""" Developing a simple API using Python with the http.server"""
 
 PORT = 8000
 
