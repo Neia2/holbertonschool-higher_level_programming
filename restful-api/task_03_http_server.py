@@ -1,12 +1,10 @@
-import http.server
-import socketserver
+from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 """ Developing a simple API using Python with the http.server"""
 
-PORT = 8000
 
-
-class MyHandler(http.server.SimpleHTTPRequestHandler):
+class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+    """launching a server using port 8000"""
     def do_GET(self):
         if self.path == '/':
             self.send_response(200)
@@ -35,6 +33,13 @@ class MyHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(b"Endpoint not found")
 
 
-with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
+if __name__ == "__main__":
+    httpd = HTTPServer(('', 8000), SimpleHTTPRequestHandler)
+    print("servint at port 8000")
+    httpd.serve_forever()
+
+
+"""with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
     print(f"Serving at port {PORT}")
     httpd.serve_forever()
+    """
