@@ -16,15 +16,28 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            data = {"name": "John", "age": 30, "city": "New York"}
+            data = {
+                "name": "John",
+                "age": 30,
+                "city": "New York"
+                }
             self.wfile.write(json.dumps(data).encode('utf-8'))
 
         elif self.path == '/status':
             self.send_response(200)
-            self.send_header('Content-type', 'application/json')
+            self.send_header('Content-type', "text/plain")
             self.end_headers()
-            status_data = {"status": "OK"}
-            self.wfile.write(json.dumps(status_data).encode('utf-8'))
+            self.wfile.write(b"OK")
+
+        elif self.path == "/info":
+            self.send_response(200)
+            self.send_header("Content-type", 'application/json')
+            self.end_headers()
+            info_data = {
+                "version": "1.0",
+                "description": "A simple API built with http.server"
+            }
+            self.wfile.write(json.dumps(info_data).encode("utf-8"))
 
         else:
             self.send_response(404)
@@ -35,11 +48,5 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     httpd = HTTPServer(('', 8000), SimpleHTTPRequestHandler)
-    print("servint at port 8000")
+    print("serving at port 8000")
     httpd.serve_forever()
-
-
-"""with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
-    print(f"Serving at port {PORT}")
-    httpd.serve_forever()
-    """
