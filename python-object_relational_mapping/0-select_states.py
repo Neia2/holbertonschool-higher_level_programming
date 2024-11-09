@@ -1,32 +1,39 @@
-import mysql.connector
-
-# Connect to the MySQL database
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    passwd="123passwd",
-    database="hbtn_0e_0_usa"  # Specify the database
-)
-
-# Create a cursor to execute SQL queries
-cursor = mydb.cursor()
-
-# SQL query to create the table if it doesn't exist
-create_table_query = """
-CREATE TABLE IF NOT EXISTS states (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(256) NOT NULL,
-    PRIMARY KEY (id)
-);
+#!/usr/bin/python3
 """
-cursor.execute(create_table_query)
+Script that lists all states from the database hbtn_0e_0_usa
+"""
 
-list_states_query = "SELECT * FROM states;"
-cursor.execute(list_states_query)
+import MySQLdb
+import sys
 
-states = cursor.fetchall()
-for state in states:
-    print(state)
+def main():
+    """
+    Connects to a MySQL database and retrieves all states, sorted by id.
+    """
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
 
-cursor.close()
-mydb.close()
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=mysql_username,
+        passwd=mysql_password,
+        db=database_name,
+        charset="utf8"
+    )
+
+    cursor = db.cursor()
+
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+
+    states = cursor.fetchall()
+
+    for state in states:
+        print(state)
+
+    cursor.close()
+    db.close()
+
+if __name__ == "__main__":
+    main()
