@@ -1,15 +1,12 @@
 #!/usr/bin/python3
-import MySQLdb
-import sys
-
 """
 Script that lists all states from the database hbtn_0e_0_usa
 """
 
-def main():
-    """
-    Connects to a MySQL database and retrieves all states, sorted by id.
-    """
+import MySQLdb
+import sys
+
+if __name__ == "__main__":
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
@@ -24,17 +21,11 @@ def main():
     )
 
     cursor = mydb.cursor()
-
     cursor.execute("SELECT * FROM states ORDER BY id ASC")
-
     states = cursor.fetchall()
 
     for state in states:
         print(state)
 
-    mydb.commit()
-
+    cursor.close()
     mydb.close()
-
-if __name__ == "__main__":
-    main()
