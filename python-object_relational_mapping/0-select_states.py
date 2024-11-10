@@ -1,10 +1,10 @@
 #!/usr/bin/python3
+import MySQLdb
+import sys
+
 """
 Script that lists all states from the database hbtn_0e_0_usa
 """
-
-import MySQLdb
-import sys
 
 def main():
     """
@@ -14,16 +14,16 @@ def main():
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
 
-    db = MySQLdb.connect(
+    mydb = MySQLdb.connect(
         host="localhost",
-        port=3306,
         user=mysql_username,
         passwd=mysql_password,
         db=database_name,
-        charset="utf8"
+        charset="utf8",
+        port=3306
     )
 
-    cursor = db.cursor()
+    cursor = mydb.cursor()
 
     cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
@@ -32,8 +32,9 @@ def main():
     for state in states:
         print(state)
 
-    cursor.close()
-    db.close()
+    mydb.commit()
+
+    mydb.close()
 
 if __name__ == "__main__":
     main()
