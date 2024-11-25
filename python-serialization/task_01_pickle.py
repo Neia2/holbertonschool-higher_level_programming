@@ -23,8 +23,7 @@ class CustomObject:
     @classmethod
     def deserialize(cls, filename):
         """
-        Deserialize a CustomObject instance from the provided file using pickle.
-        """
+        Deserialize a CustomObject instance from the prov file using pickle."""
         try:
             with open(filename, 'rb') as f:
                 return pickle.load(f)
